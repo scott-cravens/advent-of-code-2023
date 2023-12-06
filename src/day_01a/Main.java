@@ -6,14 +6,8 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        if (args.length != 1) {
-            System.err.println("Usage: java Main <file_path>");
-            System.exit(1);
-        }
 
-        String filePath = args[0];
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_01b/input.txt"))) {
             int sumOfCombinedDigits = 0;
 
             String line;
