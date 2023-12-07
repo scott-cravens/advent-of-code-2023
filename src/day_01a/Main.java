@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_01b/input.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_01a/input.txt"))) {
             int sumOfCombinedDigits = 0;
 
             String line;
