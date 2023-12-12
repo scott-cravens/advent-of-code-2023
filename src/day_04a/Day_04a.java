@@ -30,7 +30,7 @@ public class Day_04a {
     }
 
     private static int calculatePoints(String line) {
-        String[] parts = line.split("[:||]");
+        String[] parts = line.split("[:|]");
         String[] winningNumbers = parts[1].trim().split("\\s+");
         String[] guessedNumbers = parts[2].trim().split("\\s+");
 
