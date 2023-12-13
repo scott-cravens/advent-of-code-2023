@@ -1,11 +1,11 @@
-package day_01b;
+package day_01;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.TreeMap;
 
-public class Main {
+public class Day_01b {
 
     // Array of number words and their corresponding numeric values
     private static final String[] NUMBER_PAIRS = {"one", "1", "two", "2", "three", "3", "four", "4", "five", "5", "six", "6", "seven", "7", "eight", "8", "nine", "9"};
@@ -61,7 +61,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_01b/input.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_01/input.txt"))) {
             int sumOfCombinedDigits = 0;
 
             String line;

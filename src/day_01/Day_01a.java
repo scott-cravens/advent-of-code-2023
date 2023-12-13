@@ -1,13 +1,13 @@
-package day_01a;
+package day_01;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Main {
+public class Day_01a {
     public static void main(String[] args) {
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_01a/input.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_01/input.txt"))) {
             int sumOfCombinedDigits = 0;
 
             String line;
