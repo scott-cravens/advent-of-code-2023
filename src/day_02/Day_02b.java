@@ -1,4 +1,4 @@
-package day_02b;
+package day_02;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +13,7 @@ public class Day_02b {
     public static int maxBlueCubes;
 
     public static void main(String[] args) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_02a/input.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_02/input.txt"))) {
 
             int sumOfPowerSets = 0;
             String line;

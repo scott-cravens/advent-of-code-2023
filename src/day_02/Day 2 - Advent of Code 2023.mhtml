@@ -1,0 +1,721 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://adventofcode.com/2023/day/2
+Subject: Day 2 - Advent of Code 2023
+Date: Wed, 13 Dec 2023 10:59:47 -0500
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--WJphlSU8cb9wPTomfSrnq39XKiS98peMbk56ayFTA8----"
+
+
+------MultipartBoundary--WJphlSU8cb9wPTomfSrnq39XKiS98peMbk56ayFTA8----
+Content-Type: text/html
+Content-ID: <frame-4AC7447FDF69C4CEFA22330EEC489516@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://adventofcode.com/2023/day/2
+
+<!DOCTYPE html><html lang=3D"en-us"><head><meta http-equiv=3D"Content-Type"=
+ content=3D"text/html; charset=3DUTF-8">
+
+<title>Day 2 - Advent of Code 2023</title>
+<link rel=3D"stylesheet" type=3D"text/css" href=3D"https://adventofcode.com=
+/static/style.css?31">
+<link rel=3D"stylesheet alternate" type=3D"text/css" href=3D"https://advent=
+ofcode.com/static/highcontrast.css?1" title=3D"High Contrast">
+<link rel=3D"shortcut icon" href=3D"https://adventofcode.com/favicon.png">
+
+</head><!--
+
+
+
+
+Oh, hello!  Funny seeing you here.
+
+I appreciate your enthusiasm, but you aren't going to find much down here.
+There certainly aren't clues to any of the puzzles.  The best surprises don=
+'t
+even appear in the source until you unlock them for real.
+
+Please be careful with automated requests; I'm not a massive company, and I=
+ can
+only take so much traffic.  Please be considerate so that everyone gets to =
+play.
+
+If you're curious about how Advent of Code works, it's running on some cust=
+om
+Perl code. Other than a few integrations (auth, analytics, social media), I
+built the whole thing myself, including the design, animations, prose, and =
+all
+of the puzzles.
+
+The puzzles are most of the work; preparing a new calendar and a new set of
+puzzles each year takes all of my free time for 4-5 months. A lot of effort
+went into building this thing - I hope you're enjoying playing it as much a=
+s I
+enjoyed making it for you!
+
+If you'd like to hang out, I'm @ericwastl@hachyderm.io on Mastodon and
+@ericwastl on Twitter.
+
+- Eric Wastl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+<body>
+<header><div><h1 class=3D"title-global"><a href=3D"https://adventofcode.com=
+/">Advent of Code</a></h1><nav><ul><li><a href=3D"https://adventofcode.com/=
+2023/about">[About]</a></li><li><a href=3D"https://adventofcode.com/2023/ev=
+ents">[Events]</a></li><li><a href=3D"https://teespring.com/stores/advent-o=
+f-code" target=3D"_blank">[Shop]</a></li><li><a href=3D"https://adventofcod=
+e.com/2023/settings">[Settings]</a></li><li><a href=3D"https://adventofcode=
+.com/2023/auth/logout">[Log Out]</a></li></ul></nav><div class=3D"user">Sco=
+tt Cravens <span class=3D"star-count">5*</span></div></div><div><h1 class=
+=3D"title-event">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=3D"title-e=
+vent-wrap">/*</span><a href=3D"https://adventofcode.com/2023">2023</a><span=
+ class=3D"title-event-wrap">*/</span></h1><nav><ul><li><a href=3D"https://a=
+dventofcode.com/2023">[Calendar]</a></li><li><a href=3D"https://adventofcod=
+e.com/2023/support">[AoC++]</a></li><li><a href=3D"https://adventofcode.com=
+/2023/sponsors">[Sponsors]</a></li><li><a href=3D"https://adventofcode.com/=
+2023/leaderboard">[Leaderboard]</a></li><li><a href=3D"https://adventofcode=
+.com/2023/stats">[Stats]</a></li></ul></nav></div></header>
+
+<div id=3D"sidebar">
+<div id=3D"sponsor"><div class=3D"quiet">Our <a href=3D"https://adventofcod=
+e.com/2023/sponsors">sponsors</a> help make Advent of Code possible:</div><=
+div class=3D"sponsor"><a href=3D"https://union.build/" target=3D"_blank" re=
+l=3D"noopener">Union</a> - Bridging IBC &lt;&gt; ETH with Zero-Knowledge cr=
+ypto, live on our testnet!</div></div>
+</div><!--/sidebar-->
+
+<main>
+<article class=3D"day-desc"><h2>--- Day 2: Cube Conundrum ---</h2><p>You're=
+ launched high into the atmosphere! The apex of your trajectory just barely=
+ reaches the surface of a large island floating in the sky. You gently land=
+ in a fluffy pile of leaves. It's quite cold, but you don't see much snow. =
+An Elf runs over to greet you.</p>
+<p>The Elf explains that you've arrived at <em>Snow Island</em> and apologi=
+zes for the lack of snow. He'll be happy to explain the situation, but it's=
+ a bit of a walk, so you have some time. They don't get many visitors up he=
+re; <span title=3D"No, the Elf's name is not 'WOPR'. It's Joshua.">would yo=
+u like to play a game</span> in the meantime?</p>
+<p>As you walk, the Elf shows you a small bag and some cubes which are eith=
+er red, green, or blue. Each time you play this game, he will hide a secret=
+ number of cubes of each color in the bag, and your goal is to figure out i=
+nformation about the number of cubes.</p>
+<p>To get information, once a bag has been loaded with cubes, the Elf will =
+reach into the bag, grab a handful of random cubes, show them to you, and t=
+hen put them back in the bag. He'll do this a few times per game.</p>
+<p>You play several games and record the information from each game (your p=
+uzzle input). Each game is listed with its ID number (like the <code>11</co=
+de> in <code>Game 11: ...</code>) followed by a semicolon-separated list of=
+ subsets of cubes that were revealed from the bag (like <code>3 red, 5 gree=
+n, 4 blue</code>).</p>
+<p>For example, the record of a few games might look like this:</p>
+<pre><code>Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
+Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
+Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
+Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
+Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
+</code></pre>
+<p>In game 1, three sets of cubes are revealed from the bag (and then put b=
+ack again). The first set is 3 blue cubes and 4 red cubes; the second set i=
+s 1 red cube, 2 green cubes, and 6 blue cubes; the third set is only 2 gree=
+n cubes.</p>
+<p>The Elf would first like to know which games would have been possible if=
+ the bag contained <em>only 12 red cubes, 13 green cubes, and 14 blue cubes=
+</em>?</p>
+<p>In the example above, games 1, 2, and 5 would have been <em>possible</em=
+> if the bag had been loaded with that configuration. However, game 3 would=
+ have been <em>impossible</em> because at one point the Elf showed you 20 r=
+ed cubes at once; similarly, game 4 would also have been <em>impossible</em=
+> because the Elf showed you 15 blue cubes at once. If you add up the IDs o=
+f the games that would have been possible, you get <code><em>8</em></code>.=
+</p>
+<p>Determine which games would have been possible if the bag had been loade=
+d with only 12 red cubes, 13 green cubes, and 14 blue cubes. <em>What is th=
+e sum of the IDs of those games?</em></p>
+</article>
+<p>Your puzzle answer was <code>2176</code>.</p><article class=3D"day-desc"=
+><h2 id=3D"part2">--- Part Two ---</h2><p>The Elf says they've stopped prod=
+ucing snow because they aren't getting any <em>water</em>! He isn't sure wh=
+y the water stopped; however, he can show you how to get to the water sourc=
+e to check it out for yourself. It's just up ahead!</p>
+<p>As you continue your walk, the Elf poses a second question: in each game=
+ you played, what is the <em>fewest number of cubes of each color</em> that=
+ could have been in the bag to make the game possible?</p>
+<p>Again consider the example games from earlier:</p>
+<pre><code>Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
+Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
+Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
+Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
+Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
+</code></pre>
+<ul>
+<li>In game 1, the game could have been played with as few as 4 red, 2 gree=
+n, and 6 blue cubes. If any color had even one fewer cube, the game would h=
+ave been impossible.</li>
+<li>Game 2 could have been played with a minimum of 1 red, 3 green, and 4 b=
+lue cubes.</li>
+<li>Game 3 must have been played with at least 20 red, 13 green, and 6 blue=
+ cubes.</li>
+<li>Game 4 required at least 14 red, 3 green, and 15 blue cubes.</li>
+<li>Game 5 needed no fewer than 6 red, 3 green, and 2 blue cubes in the bag=
+.</li>
+</ul>
+<p>The <em>power</em> of a set of cubes is equal to the numbers of red, gre=
+en, and blue cubes multiplied together. The power of the minimum set of cub=
+es in game 1 is <code>48</code>. In games 2-5 it was <code>12</code>, <code=
+>1560</code>, <code>630</code>, and <code>36</code>, respectively. Adding u=
+p these five powers produces the sum <code><em>2286</em></code>.</p>
+<p>For each game, find the minimum set of cubes that must have been present=
+. <em>What is the sum of the power of these sets?</em></p>
+</article>
+<p>Your puzzle answer was <code>63700</code>.</p><p class=3D"day-success">B=
+oth parts of this puzzle are complete! They provide two gold stars: **</p>
+<p>At this point, you should <a href=3D"https://adventofcode.com/2023">retu=
+rn to your Advent calendar</a> and try another puzzle.</p>
+<p>If you still want to see it, you can <a href=3D"https://adventofcode.com=
+/2023/day/2/input" target=3D"_blank">get your puzzle input</a>.</p>
+<p>You can also <span class=3D"share">[Share<span class=3D"share-content">o=
+n
+  <a href=3D"https://twitter.com/intent/tweet?text=3DI%27ve+completed+%22Cu=
+be+Conundrum%22+%2D+Day+2+%2D+Advent+of+Code+2023&amp;url=3Dhttps%3A%2F%2Fa=
+dventofcode%2Ecom%2F2023%2Fday%2F2&amp;related=3Dericwastl&amp;hashtags=3DA=
+dventOfCode" target=3D"_blank">Twitter</a>
+  <a target=3D"_blank">Mastodon</a></span>]</span> this puzzle.</p>
+</main>
+
+<!-- ga -->
+
+<!-- /ga -->
+
+</body></html>
+------MultipartBoundary--WJphlSU8cb9wPTomfSrnq39XKiS98peMbk56ayFTA8----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://adventofcode.com/static/style.css?31
+
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=3DSource+Code+Pro:wgh=
+t@300");
+
+body { background: rgb(15, 15, 35); color: rgb(204, 204, 204); font-family:=
+ "Source Code Pro", monospace; font-weight: 300; font-size: 14pt; min-width=
+: 60em; }
+
+img { border: 0px; }
+
+a { outline: 0px; }
+
+main, figure, figcaption { display: block; }
+
+pre, code { font-family: "Source Code Pro", monospace; }
+
+header, main { text-size-adjust: none; }
+
+a { text-decoration: none; color: rgb(0, 153, 0); }
+
+a:hover, a:focus { color: rgb(153, 255, 153); }
+
+h1, h2 { font-size: 1em; font-weight: normal; }
+
+code { position: relative; display: inline-block; margin: 0px; padding: 0px=
+; }
+
+code::before { z-index: -1; content: ""; position: absolute; display: block=
+; inset: 3px -2px 0px; border: 1px solid rgb(51, 51, 64); background: rgb(1=
+6, 16, 26); }
+
+pre.wrap { max-width: 100%; white-space: pre-wrap; }
+
+.quiet { opacity: 0.5; }
+
+p.wrap { width: 45em; }
+
+.hidden-until-hover { border: 1px dotted gray; overflow: hidden; position: =
+relative; padding: 0px 0.5em; transition: border-color 0s linear 5s; }
+
+.hidden-until-hover::before { content: "(hover to reveal)"; position: absol=
+ute; opacity: 0.5; text-align: center; left: 0px; top: 0px; width: 100%; ov=
+erflow: hidden; transition: width 0s linear 5s; }
+
+.hidden-until-hover > * { visibility: hidden; transition: visibility 0s lin=
+ear 5s; }
+
+.hidden-until-hover:hover { transition: border-color 0s linear 1s; border-c=
+olor: transparent; }
+
+.hidden-until-hover:hover::before { content: "( keep hovering )"; transitio=
+n: width 0s linear 1s; width: 0px; }
+
+.hidden-until-hover:hover > * { transition: visibility 0s linear 1s; visibi=
+lity: visible; }
+
+.warning:not(.warning-active) { transition: color 1s ease 0s, opacity 1s ea=
+se 0s; }
+
+.warning-active { color: rgb(255, 0, 0); opacity: 1; }
+
+.star-count { color: rgb(255, 255, 102); }
+
+.supporter-badge { color: rgb(255, 255, 102); }
+
+a.supporter-badge:hover, a.supporter-badge:focus { text-decoration: none; c=
+olor: rgb(255, 255, 204); text-shadow: rgb(255, 255, 102) 0px 0px 5px; }
+
+.sponsor-badge { color: rgb(121, 162, 216); }
+
+a.sponsor-badge:hover, a.sponsor-badge:focus { text-decoration: none; color=
+: rgb(204, 219, 237); text-shadow: rgb(121, 162, 216) 0px 0px 5px; }
+
+#sidebar { width: 200px; float: right; margin: 0px 15px 2em 2em; position: =
+relative; z-index: 10; }
+
+#sponsor { margin-bottom: 2.5em; }
+
+header { white-space: nowrap; cursor: default; z-index: 100; margin-bottom:=
+ 2em; }
+
+header h1 { display: inline-block; margin: 0px; padding-right: 1em; }
+
+header h1 a, header h1 span { display: inline-block; text-decoration: none;=
+ color: rgb(0, 204, 0); text-shadow: rgb(0, 204, 0) 0px 0px 2px, rgb(0, 204=
+, 0) 0px 0px 5px; }
+
+header h1 a:hover, header h1 a:focus { color: rgb(153, 255, 153); text-shad=
+ow: rgb(153, 255, 153) 0px 0px 2px, rgb(153, 255, 153) 0px 0px 5px; }
+
+header h1.title-event .title-event-wrap { opacity: 0.33; white-space: pre; =
+}
+
+header .user { display: inline-block; padding-left: 1em; }
+
+header nav { display: inline-block; }
+
+header nav ul { list-style-type: none; padding: 0px; margin: 0px; display: =
+inline-block; }
+
+header nav li { display: inline-block; padding: 0px 0.6em; }
+
+header nav a { display: inline-block; text-decoration: none; outline: none;=
+ }
+
+input[type=3D"text"], textarea { color: inherit; border: 1px solid rgb(102,=
+ 102, 102); background: rgb(16, 16, 26); padding: 0px 2px; font-family: inh=
+erit; font-size: inherit; margin: 0px; }
+
+textarea { vertical-align: top; }
+
+label img { vertical-align: bottom; position: relative; top: -3px; margin-r=
+ight: 0.3em; }
+
+input[type=3D"radio"] { display: none; }
+
+input[type=3D"radio"] ~ span { cursor: pointer; display: inline-block; }
+
+input[type=3D"radio"] ~ span::before { content: "( ) "; }
+
+input[type=3D"radio"] ~ span:hover, input[type=3D"radio"] ~ span:focus { ba=
+ckground-color: rgb(25, 25, 59); }
+
+input[type=3D"radio"]:checked ~ span { color: rgb(255, 255, 255); }
+
+input[type=3D"radio"]:checked ~ span::before { content: "(O) "; }
+
+input[type=3D"checkbox"] { display: none; }
+
+input[type=3D"checkbox"] ~ span { cursor: pointer; display: inline-block; }
+
+input[type=3D"checkbox"] ~ span::before { content: "[ ] "; }
+
+input[type=3D"checkbox"] ~ span:hover, input[type=3D"checkbox"] ~ span:focu=
+s { background-color: rgb(25, 25, 59); }
+
+input[type=3D"checkbox"]:checked ~ span { color: rgb(255, 255, 255); }
+
+input[type=3D"checkbox"]:checked ~ span::before { content: "[X] "; }
+
+input[type=3D"checkbox"]:disabled ~ span { opacity: 0.3; cursor: default; }
+
+input[type=3D"checkbox"]:disabled ~ span::before { content: "[-] "; }
+
+input[type=3D"checkbox"]:disabled ~ span:hover { background-color: transpar=
+ent; }
+
+input[type=3D"submit"] { background: transparent; border: 0px; font-family:=
+ inherit; font-size: inherit; margin: 0px; padding: 0px; color: rgb(0, 153,=
+ 0); cursor: pointer; }
+
+input[type=3D"submit"]:hover, input[type=3D"submit"]:focus { color: rgb(153=
+, 255, 153); }
+
+article { width: 45em; margin-bottom: 2em; margin-top: 2em; }
+
+article:first-of-type { margin-top: 0px; }
+
+article h2 { color: rgb(255, 255, 255); margin-top: 1em; margin-bottom: 1em=
+; white-space: nowrap; }
+
+article h2 + * { margin-top: 0px; }
+
+article em { color: rgb(255, 255, 255); font-style: normal; text-shadow: rg=
+b(255, 255, 255) 0px 0px 5px; }
+
+article em.star { color: rgb(255, 255, 102); font-style: normal; text-shado=
+w: rgb(255, 255, 102) 0px 0px 5px; }
+
+article a { white-space: nowrap; }
+
+article .aside { opacity: 0.6; }
+
+article ul { list-style-type: none; padding: 0px; }
+
+article li { padding-left: 2.5em; position: relative; }
+
+article li::before { content: "=C2=A0=C2=A0-=C2=A0"; position: absolute; le=
+ft: 0px; top: 0px; }
+
+.day-success { color: rgb(255, 255, 102); text-shadow: rgb(255, 255, 102) 0=
+px 0px 5px; }
+
+form#settings input[type=3D"radio"] ~ span { min-width: 30em; }
+
+form#settings input[type=3D"checkbox"] ~ span { min-width: 30em; }
+
+.share { color: rgb(0, 153, 0); cursor: default; transition: color 0.2s eas=
+e 1s; }
+
+.share:hover, .share:focus-within { color: rgb(170, 255, 170); transition: =
+color 0.2s ease 0s; }
+
+.share .share-content { display: inline-block; vertical-align: text-bottom;=
+ white-space: nowrap; overflow: hidden; max-width: 0px; transition: max-wid=
+th 0.2s ease 1s; }
+
+.share .share-content::before { content: "=C2=A0"; }
+
+.share .share-content::after { }
+
+.share:hover .share-content, .share:focus-within .share-content { max-width=
+: 45em; transition: max-width 0.2s ease 0s; }
+
+.puzzle-input { border: 1px solid rgb(153, 153, 153); background: rgb(51, 5=
+1, 51); color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px =
+5px; }
+
+.calendar { cursor: default; user-select: none; }
+
+.calendar > span { color: rgb(51, 51, 51); }
+
+.calendar > a { text-decoration: none; color: rgb(102, 102, 102); outline: =
+none; cursor: default; }
+
+.calendar a:hover, .calendar a:focus { background-color: rgba(119, 119, 165=
+, 0.2); cursor: pointer; }
+
+#calendar-countdown { padding-left: 0.5em; color: rgb(204, 204, 204); }
+
+.calendar .calendar-day { color: rgb(102, 102, 102); }
+
+.calendar a .calendar-day { color: rgb(204, 204, 204); }
+
+.calendar a .calendar-mark-complete, .calendar a .calendar-mark-verycomplet=
+e { visibility: hidden; }
+
+.calendar a.calendar-complete .calendar-mark-complete, .calendar a.calendar=
+-verycomplete .calendar-mark-complete { visibility: visible; color: rgb(255=
+, 255, 102); }
+
+.calendar a.calendar-verycomplete .calendar-mark-verycomplete { visibility:=
+ visible; color: rgb(255, 255, 102); }
+
+.calendar .calendar-day-new { animation: 5s ease 0s 1 normal none running a=
+nim-day-new; }
+
+.calendar .calendar-day-new .calendar-day { animation: 5s ease 0s 1 normal =
+none running anim-day-new-day; }
+
+@keyframes anim-day-new {=20
+  0% { color: rgb(51, 51, 51); text-shadow: transparent 0px 0px 5px; }
+  25% { color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px =
+5px; }
+  100% { color: rgb(102, 102, 102); text-shadow: transparent 0px 0px 5px; }
+}
+
+@keyframes anim-day-new-day {=20
+  0% { color: rgb(102, 102, 102); text-shadow: transparent 0px 0px 5px; }
+  25% { color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px =
+5px; }
+  100% { color: rgb(204, 204, 204); text-shadow: transparent 0px 0px 5px; }
+}
+
+.eventlist-event { white-space: pre; }
+
+.stats > span, .stats > span .stats-firstonly, .stats > span .stats-both { =
+color: rgb(102, 102, 102); }
+
+.stats > a { color: rgb(204, 204, 204); min-width: 35em; display: inline-bl=
+ock; }
+
+.stats > a:hover, .stats > a:focus { background-color: rgb(30, 30, 70); }
+
+.stats-firstonly { color: rgb(153, 153, 204); }
+
+.stats-both { color: rgb(255, 255, 102); }
+
+.leaderboard-daylinks { cursor: default; }
+
+.leaderboard-daylinks-selected { color: rgb(255, 255, 255); text-shadow: rg=
+b(255, 255, 255) 0px 0px 5px; }
+
+.leaderboard-daydesc-first { color: rgb(153, 153, 204); }
+
+.leaderboard-daydesc-both { color: rgb(255, 255, 102); }
+
+.leaderboard-entry { white-space: pre; }
+
+.leaderboard-entry .leaderboard-totalscore { color: rgb(255, 255, 255); }
+
+.leaderboard-anon { opacity: 0.6; }
+
+.leaderboard-userphoto { display: inline-block; height: 20px; width: 20px; =
+margin: 0px 0.5em; text-align: center; }
+
+.leaderboard-userphoto img { height: 20px; max-width: 20px; vertical-align:=
+ middle; position: relative; top: -2px; }
+
+.leaderboard-time { opacity: 0.5; }
+
+.privboard-row { white-space: pre; }
+
+.privboard-name { vertical-align: text-bottom; }
+
+.privboard-days > span { display: inline-block; color: rgb(51, 51, 51); }
+
+.privboard-days > a { display: inline-block; }
+
+.privboard-star-locked { visibility: hidden; }
+
+.privboard-star-unlocked { color: rgb(51, 51, 51); }
+
+.privboard-star-firstonly { color: rgb(153, 153, 204); }
+
+.privboard-star-both { color: rgb(255, 255, 102); }
+
+.privboard-delbtn { opacity: 0.33; }
+
+.privboard-row:hover .privboard-delbtn { opacity: 1; }
+
+.sponsors { width: 46em; }
+
+.sponsor { margin: 1em 0px; }
+------MultipartBoundary--WJphlSU8cb9wPTomfSrnq39XKiS98peMbk56ayFTA8----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300
+
+@charset "utf-8";
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMRrTEUc.woff2") format("woff2"); unicode-=
+range: U+460-52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2=
+F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtM1rTEUc.woff2") format("woff2"); unicode-=
+range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMVrTEUc.woff2") format("woff2"); unicode-=
+range: U+1F00-1FFF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMprTEUc.woff2") format("woff2"); unicode-=
+range: U+370-3FF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMZrTEUc.woff2") format("woff2"); unicode-=
+range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+=
+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMdrTEUc.woff2") format("woff2"); unicode-=
+range: U+100-2AF, U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+=
+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMlrTA.woff2") format("woff2"); unicode-ra=
+nge: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308=
+, U+329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+221=
+5, U+FEFF, U+FFFD; }
+------MultipartBoundary--WJphlSU8cb9wPTomfSrnq39XKiS98peMbk56ayFTA8----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://adventofcode.com/static/highcontrast.css?1
+
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=3DSource+Code+Pro:wgh=
+t@400;900");
+
+* { background: transparent !important; color: black !important; text-shado=
+w: none !important; }
+
+body { background: white !important; font-weight: 400 !important; }
+
+article [title] { border-bottom-color: black !important; }
+
+a { color: rgb(0, 0, 255) !important; text-decoration: underline !important=
+; }
+
+em { font-weight: 900 !important; }
+
+code::before { background: transparent !important; border-color: black !imp=
+ortant; }
+
+.stats-firstonly { opacity: 0.5; }
+
+.privboard-star-firstonly { opacity: 0.667; }
+
+.privboard-star-unlocked { opacity: 0.333; }
+------MultipartBoundary--WJphlSU8cb9wPTomfSrnq39XKiS98peMbk56ayFTA8----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;900
+
+@charset "utf-8";
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMOvWjMY.woff2") format("woff2"); unicode-range: U+460-52F,=
+ U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlOevWjMY.woff2") format("woff2"); unicode-range: U+301, U+4=
+00-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMevWjMY.woff2") format("woff2"); unicode-range: U+1F00-1FF=
+F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlPuvWjMY.woff2") format("woff2"); unicode-range: U+370-3FF;=
+ }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMuvWjMY.woff2") format("woff2"); unicode-range: U+102-103,=
+ U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-30=
+4, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlM-vWjMY.woff2") format("woff2"); unicode-range: U+100-2AF,=
+ U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD=
+-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlPevW.woff2") format("woff2"); unicode-range: U+0-FF, U+131=
+, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-20=
+6F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;=
+ }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMOvWjMY.woff2") format("woff2"); unicode-range: U+460-52F,=
+ U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlOevWjMY.woff2") format("woff2"); unicode-range: U+301, U+4=
+00-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMevWjMY.woff2") format("woff2"); unicode-range: U+1F00-1FF=
+F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlPuvWjMY.woff2") format("woff2"); unicode-range: U+370-3FF;=
+ }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMuvWjMY.woff2") format("woff2"); unicode-range: U+102-103,=
+ U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-30=
+4, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlM-vWjMY.woff2") format("woff2"); unicode-range: U+100-2AF,=
+ U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD=
+-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlPevW.woff2") format("woff2"); unicode-range: U+0-FF, U+131=
+, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-20=
+6F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;=
+ }
+------MultipartBoundary--WJphlSU8cb9wPTomfSrnq39XKiS98peMbk56ayFTA8------

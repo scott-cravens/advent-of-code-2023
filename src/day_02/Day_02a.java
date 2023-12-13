@@ -1,4 +1,4 @@
-package day_02a;
+package day_02;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +13,7 @@ public class Day_02a {
     public static final int blueCubes = 14;
 
     public static void main(String[] args) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_02a/input.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_02/input.txt"))) {
 
             int sumOfGameIds = 0;
             String line;
