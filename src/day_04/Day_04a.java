@@ -1,4 +1,4 @@
-package day_04a;
+package day_04;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +13,7 @@ public class Day_04a {
     private static final Pattern CARD_NUMBER_PATTERN = Pattern.compile("[^0-9]");
 
     public static void main(String[] args) {
-        Path filePath = Paths.get("src/day_04a/input.txt");
+        Path filePath = Paths.get("src/day_04/input.txt");
         int totalPoints = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath.toFile()))) {
