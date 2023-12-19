@@ -13,7 +13,7 @@ public class Day_04a {
     private static final Pattern CARD_NUMBER_PATTERN = Pattern.compile("[^0-9]");
 
     public static void main(String[] args) {
-        Path filePath = Paths.get("src/day_04/input.txt");
+        Path filePath = Paths.get("src/main/java/day_04/input.txt");
         int totalPoints = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath.toFile()))) {
@@ -21,7 +21,6 @@ public class Day_04a {
             while ((line = br.readLine()) != null) {
                 int points = calculatePoints(line);
                 totalPoints += points;
-                System.out.println("Card Number: " + getCardNumber(line) + ", Points: " + points);
             }
             System.out.println("Total Points: " + totalPoints);
         } catch (IOException e) {

@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Day_04b {
     public static void main(String[] args) {
-        String filePath = "src/day_04/input.txt";
+        String filePath = "src/main/java/day_04/input.txt";
         List<Card> cards = new ArrayList<>();
 
         // Read cards from the file

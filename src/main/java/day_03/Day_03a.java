@@ -13,7 +13,7 @@ public class Day_03a {
     public static List<String> validPartNumbers = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
-        Path filePath = Paths.get("src/day_03/input.txt");
+        Path filePath = Paths.get("src/main/java/day_03/input.txt");
         List<String> lines;
 
         try {

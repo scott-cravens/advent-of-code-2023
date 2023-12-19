@@ -13,7 +13,7 @@ public class Day_02a {
     public static final int blueCubes = 14;
 
     public static void main(String[] args) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/day_02/input.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/java/day_02/input.txt"))) {
 
             int sumOfGameIds = 0;
             String line;
