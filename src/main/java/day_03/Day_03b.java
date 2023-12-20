@@ -11,7 +11,7 @@ import java.util.List;
 public class Day_03b {
 
     // List to store extracted valid part numbers from the schematic
-    public static List<String> potentialValidPartNumbers = new ArrayList<>();
+    public static List<Parts> parts = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         Path filePath = Paths.get("src/main/java/day_03/input.txt");
@@ -35,9 +35,7 @@ public class Day_03b {
         // Find and store valid part numbers identified from the schematic
         findValidPartNumbers(engineSchematic, rows, cols);
 
-        // Calculate the sum of integers parsed from the valid part numbers
-        int sum = potentialValidPartNumbers.stream().mapToInt(Integer::parseInt).sum();
-        System.out.println("Sum of valid part numbers: " + sum);
+        // TODO: Loop through parts to find and process gears
     }
 
     private static void findValidPartNumbers(char[][] schematic, int rows, int cols) {
@@ -52,18 +50,11 @@ public class Day_03b {
                     findUniqueAdjacentAsterisks(schematic, row, col, asterisks);
                 } else {
                     if (!asterisks.isEmpty()) {
-                        // TODO: We finally have a complete potential part number and the asterisks
-                        //  ArrayList contains the coordinates for the adjacent asterisk(s). Create a
-                        //  new structure to store potentialValidPartNumbers and the asterisks ArrayList
-                        potentialValidPartNumbers.add(partNumberBuilder.toString());
+                        parts.add(new Parts(partNumberBuilder.toString(), new int[]{row, col}, asterisks));
                         asterisks = new ArrayList<>();
                     }
                     partNumberBuilder = new StringBuilder();
                 }
-            }
-            // Check if a valid number is at the end of the line
-            if (!partNumberBuilder.isEmpty() && hasAdjacentSymbol) {
-                potentialValidPartNumbers.add(partNumberBuilder.toString());
             }
         }
     }
@@ -111,5 +102,30 @@ public class Day_03b {
             array[i] = lines.get(i).toCharArray();
         }
         return array;
+    }
+}
+
+class Parts {
+
+    String partNumber;
+    int[] partNumberCoordinates;
+    ArrayList<int[]> asterisks;
+
+    public Parts(String partNumber, int[] partNumberCoordinates, ArrayList<int[]> asterisks) {
+        this.partNumber = partNumber;
+        this.partNumberCoordinates = partNumberCoordinates;
+        this.asterisks = asterisks;
+    }
+
+    public String getPartNumber() {
+        return partNumber;
+    }
+
+    public int[] getPartNumberCoordinates() {
+        return partNumberCoordinates;
+    }
+
+    public ArrayList<int[]> getAsterisks() {
+        return asterisks;
     }
 }
