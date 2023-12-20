@@ -4,9 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Day_03b {
 
@@ -35,7 +34,42 @@ public class Day_03b {
         // Find and store valid part numbers identified from the schematic
         findValidPartNumbers(engineSchematic, rows, cols);
 
-        // TODO: Loop through parts to find and process gears
+        analyzeAndPrintGearRatios();
+    }
+
+    private static char[][] convertListToArray(List<String> lines, int rows, int cols) {
+        char[][] array = new char[rows][cols];
+        for (int i = 0; i < rows; i++) {
+            array[i] = lines.get(i).toCharArray();
+        }
+        return array;
+    }
+
+    private static void analyzeAndPrintGearRatios() {
+        int totalSum = calculateGearRatiosSum();
+        System.out.println("Total Sum of Gear Ratios: " + totalSum);
+    }
+
+    private static int calculateGearRatiosSum() {
+        int sum = 0;
+        for (int i = 0; i < parts.size(); i++) {
+            for (int j = i + 1; j < parts.size(); j++) {
+                Parts part1 = parts.get(i);
+                Parts part2 = parts.get(j);
+
+                if (areAsterisksEquivalent(part1.getAsterisks(), part2.getAsterisks())) {
+                    int gearRatio = Integer.parseInt(part1.getPartNumber()) * Integer.parseInt(part2.getPartNumber());
+                    sum += gearRatio;
+                }
+            }
+        }
+        return sum;
+    }
+
+    private static boolean areAsterisksEquivalent(ArrayList<int[]> asterisks1, ArrayList<int[]> asterisks2) {
+        Set<String> set1 = asterisks1.stream().map(Arrays::toString).collect(Collectors.toSet());
+        Set<String> set2 = asterisks2.stream().map(Arrays::toString).collect(Collectors.toSet());
+        return set1.equals(set2);
     }
 
     private static void findValidPartNumbers(char[][] schematic, int rows, int cols) {
@@ -91,16 +125,6 @@ public class Day_03b {
             }
         }
         return asterisks;
-    }
-
-    private static char[][] convertListToArray(List<String> lines, int rows, int cols) {
-        // Create a 2D character array with dimensions matching the number of rows and columns
-        char[][] array = new char[rows][cols];
-        for (int i = 0; i < rows; i++) {
-            // Convert each line from the list to a character array and assign it to a row in the 2D array
-            array[i] = lines.get(i).toCharArray();
-        }
-        return array;
     }
 }
 
