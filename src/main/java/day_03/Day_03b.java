@@ -42,7 +42,6 @@ public class Day_03b {
         StringBuilder partNumberBuilder = new StringBuilder();
         ArrayList<int[]> asterisks = new ArrayList<>(); // Create an empty ArrayList to store coordinates
         for (int row = 0; row < rows; row++) {
-            boolean hasAdjacentSymbol = false;
             for (int col = 0; col < cols; col++) {
                 char currentChar = schematic[row][col];
                 if (Character.isDigit(currentChar)) {
