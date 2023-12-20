@@ -1,0 +1,723 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://adventofcode.com/2023/day/3
+Subject: Day 3 - Advent of Code 2023
+Date: Wed, 20 Dec 2023 16:27:23 -0500
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--OkW3vrvvyOVneuQPjGVFqXKbLaZEA1InqSw7JEHA4x----"
+
+
+------MultipartBoundary--OkW3vrvvyOVneuQPjGVFqXKbLaZEA1InqSw7JEHA4x----
+Content-Type: text/html
+Content-ID: <frame-8424A0E1047331AA381B3225178E73FD@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://adventofcode.com/2023/day/3
+
+<!DOCTYPE html><html lang=3D"en-us"><head><meta http-equiv=3D"Content-Type"=
+ content=3D"text/html; charset=3DUTF-8">
+
+<title>Day 3 - Advent of Code 2023</title>
+<link rel=3D"stylesheet" type=3D"text/css" href=3D"https://adventofcode.com=
+/static/style.css?31">
+<link rel=3D"stylesheet alternate" type=3D"text/css" href=3D"https://advent=
+ofcode.com/static/highcontrast.css?1" title=3D"High Contrast">
+<link rel=3D"shortcut icon" href=3D"https://adventofcode.com/favicon.png">
+
+</head><!--
+
+
+
+
+Oh, hello!  Funny seeing you here.
+
+I appreciate your enthusiasm, but you aren't going to find much down here.
+There certainly aren't clues to any of the puzzles.  The best surprises don=
+'t
+even appear in the source until you unlock them for real.
+
+Please be careful with automated requests; I'm not a massive company, and I=
+ can
+only take so much traffic.  Please be considerate so that everyone gets to =
+play.
+
+If you're curious about how Advent of Code works, it's running on some cust=
+om
+Perl code. Other than a few integrations (auth, analytics, social media), I
+built the whole thing myself, including the design, animations, prose, and =
+all
+of the puzzles.
+
+The puzzles are most of the work; preparing a new calendar and a new set of
+puzzles each year takes all of my free time for 4-5 months. A lot of effort
+went into building this thing - I hope you're enjoying playing it as much a=
+s I
+enjoyed making it for you!
+
+If you'd like to hang out, I'm @ericwastl@hachyderm.io on Mastodon and
+@ericwastl on Twitter.
+
+- Eric Wastl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+<body>
+<header><div><h1 class=3D"title-global"><a href=3D"https://adventofcode.com=
+/">Advent of Code</a></h1><nav><ul><li><a href=3D"https://adventofcode.com/=
+2023/about">[About]</a></li><li><a href=3D"https://adventofcode.com/2023/ev=
+ents">[Events]</a></li><li><a href=3D"https://teespring.com/stores/advent-o=
+f-code" target=3D"_blank">[Shop]</a></li><li><a href=3D"https://adventofcod=
+e.com/2023/settings">[Settings]</a></li><li><a href=3D"https://adventofcode=
+.com/2023/auth/logout">[Log Out]</a></li></ul></nav><div class=3D"user">Sco=
+tt Cravens <span class=3D"star-count">8*</span></div></div><div><h1 class=
+=3D"title-event">&nbsp;&nbsp;&nbsp;<span class=3D"title-event-wrap">&lt;y&g=
+t;</span><a href=3D"https://adventofcode.com/2023">2023</a><span class=3D"t=
+itle-event-wrap">&lt;/y&gt;</span></h1><nav><ul><li><a href=3D"https://adve=
+ntofcode.com/2023">[Calendar]</a></li><li><a href=3D"https://adventofcode.c=
+om/2023/support">[AoC++]</a></li><li><a href=3D"https://adventofcode.com/20=
+23/sponsors">[Sponsors]</a></li><li><a href=3D"https://adventofcode.com/202=
+3/leaderboard">[Leaderboard]</a></li><li><a href=3D"https://adventofcode.co=
+m/2023/stats">[Stats]</a></li></ul></nav></div></header>
+
+<div id=3D"sidebar">
+<div id=3D"sponsor"><div class=3D"quiet">Our <a href=3D"https://adventofcod=
+e.com/2023/sponsors">sponsors</a> help make Advent of Code possible:</div><=
+div class=3D"sponsor"><a href=3D"https://optiver.com/advent-of-code" target=
+=3D"_blank" rel=3D"noopener">Optiver</a> - Ready to solve puzzles for a liv=
+ing? We=E2=80=99re hiring C++, C# and Python experts to code sub-nanosecond=
+ trading systems. Get ready for problem solving, continuous learning and th=
+e freedom to bring your software solutions to life</div></div>
+</div><!--/sidebar-->
+
+<main>
+<article class=3D"day-desc"><h2>--- Day 3: Gear Ratios ---</h2><p>You and t=
+he Elf eventually reach a <a href=3D"https://en.wikipedia.org/wiki/Gondola_=
+lift" target=3D"_blank">gondola lift</a> station; he says the gondola lift =
+will take you up to the <em>water source</em>, but this is as far as he can=
+ bring you. You go inside.</p>
+<p>It doesn't take long to find the gondolas, but there seems to be a probl=
+em: they're not moving.</p>
+<p>"Aaah!"</p>
+<p>You turn around to see a slightly-greasy Elf with a wrench and a look of=
+ surprise. "Sorry, I wasn't expecting anyone! The gondola lift isn't workin=
+g right now; it'll still be a while before I can fix it." You offer to help=
+.</p>
+<p>The engineer explains that an engine part seems to be missing from the e=
+ngine, but nobody can figure out which one. If you can <em>add up all the p=
+art numbers</em> in the engine schematic, it should be easy to work out whi=
+ch part is missing.</p>
+<p>The engine schematic (your puzzle input) consists of a visual representa=
+tion of the engine. There are lots of numbers and symbols you don't really =
+understand, but apparently <em>any number adjacent to a symbol</em>, even d=
+iagonally, is a "part number" and should be included in your sum. (Periods =
+(<code>.</code>) do not count as a symbol.)</p>
+<p>Here is an example engine schematic:</p>
+<pre><code>467..114..
+...*......
+..35..633.
+......#...
+617*......
+.....+.58.
+..592.....
+......755.
+...$.*....
+.664.598..
+</code></pre>
+<p>In this schematic, two numbers are <em>not</em> part numbers because the=
+y are not adjacent to a symbol: <code>114</code> (top right) and <code>58</=
+code> (middle right). Every other number is adjacent to a symbol and so <em=
+>is</em> a part number; their sum is <code><em>4361</em></code>.</p>
+<p>Of course, the actual engine schematic is much larger. <em>What is the s=
+um of all of the part numbers in the engine schematic?</em></p>
+</article>
+<p>Your puzzle answer was <code>540212</code>.</p><article class=3D"day-des=
+c"><h2 id=3D"part2">--- Part Two ---</h2><p>The engineer finds the missing =
+part and installs it in the engine! As the engine springs to life, you jump=
+ in the closest gondola, finally ready to ascend to the water source.</p>
+<p>You don't seem to be going very fast, though. Maybe something is still w=
+rong? Fortunately, the gondola has a phone labeled "help", so you pick it u=
+p and the engineer answers.</p>
+<p>Before you can explain the situation, she suggests that you look out the=
+ window. There stands the engineer, holding a phone in one hand and waving =
+with the other. You're going so slowly that you haven't even left the stati=
+on. You exit the gondola.</p>
+<p>The missing part wasn't the only issue - one of the gears in the engine =
+is wrong. A <em>gear</em> is any <code>*</code> symbol that is adjacent to =
+<em>exactly two part numbers</em>. Its <em>gear ratio</em> is the result of=
+ <span title=3D"They're magic gears.">multiplying</span> those two numbers =
+together.</p>
+<p>This time, you need to find the gear ratio of every gear and add them al=
+l up so that the engineer can figure out which gear needs to be replaced.</=
+p>
+<p>Consider the same engine schematic again:</p>
+<pre><code>467..114..
+...*......
+..35..633.
+......#...
+617*......
+.....+.58.
+..592.....
+......755.
+...$.*....
+.664.598..
+</code></pre>
+<p>In this schematic, there are <em>two</em> gears. The first is in the top=
+ left; it has part numbers <code>467</code> and <code>35</code>, so its gea=
+r ratio is <code>16345</code>. The second gear is in the lower right; its g=
+ear ratio is <code>451490</code>. (The <code>*</code> adjacent to <code>617=
+</code> is <em>not</em> a gear because it is only adjacent to one part numb=
+er.) Adding up all of the gear ratios produces <code><em>467835</em></code>=
+.</p>
+<p><em>What is the sum of all of the gear ratios in your engine schematic?<=
+/em></p>
+</article>
+<p>Your puzzle answer was <code>87605697</code>.</p><p class=3D"day-success=
+">Both parts of this puzzle are complete! They provide two gold stars: **</=
+p>
+<p>At this point, you should <a href=3D"https://adventofcode.com/2023">retu=
+rn to your Advent calendar</a> and try another puzzle.</p>
+<p>If you still want to see it, you can <a href=3D"https://adventofcode.com=
+/2023/day/3/input" target=3D"_blank">get your puzzle input</a>.</p>
+<p>You can also <span class=3D"share">[Share<span class=3D"share-content">o=
+n
+  <a href=3D"https://twitter.com/intent/tweet?text=3DI%27ve+completed+%22Ge=
+ar+Ratios%22+%2D+Day+3+%2D+Advent+of+Code+2023&amp;url=3Dhttps%3A%2F%2Fadve=
+ntofcode%2Ecom%2F2023%2Fday%2F3&amp;related=3Dericwastl&amp;hashtags=3DAdve=
+ntOfCode" target=3D"_blank">Twitter</a>
+  <a target=3D"_blank">Mastodon</a></span>]</span> this puzzle.</p>
+</main>
+
+<!-- ga -->
+
+<!-- /ga -->
+
+</body></html>
+------MultipartBoundary--OkW3vrvvyOVneuQPjGVFqXKbLaZEA1InqSw7JEHA4x----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://adventofcode.com/static/style.css?31
+
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=3DSource+Code+Pro:wgh=
+t@300");
+
+body { background: rgb(15, 15, 35); color: rgb(204, 204, 204); font-family:=
+ "Source Code Pro", monospace; font-weight: 300; font-size: 14pt; min-width=
+: 60em; }
+
+img { border: 0px; }
+
+a { outline: 0px; }
+
+main, figure, figcaption { display: block; }
+
+pre, code { font-family: "Source Code Pro", monospace; }
+
+header, main { text-size-adjust: none; }
+
+a { text-decoration: none; color: rgb(0, 153, 0); }
+
+a:hover, a:focus { color: rgb(153, 255, 153); }
+
+h1, h2 { font-size: 1em; font-weight: normal; }
+
+code { position: relative; display: inline-block; margin: 0px; padding: 0px=
+; }
+
+code::before { z-index: -1; content: ""; position: absolute; display: block=
+; inset: 3px -2px 0px; border: 1px solid rgb(51, 51, 64); background: rgb(1=
+6, 16, 26); }
+
+pre.wrap { max-width: 100%; white-space: pre-wrap; }
+
+.quiet { opacity: 0.5; }
+
+p.wrap { width: 45em; }
+
+.hidden-until-hover { border: 1px dotted gray; overflow: hidden; position: =
+relative; padding: 0px 0.5em; transition: border-color 0s linear 5s; }
+
+.hidden-until-hover::before { content: "(hover to reveal)"; position: absol=
+ute; opacity: 0.5; text-align: center; left: 0px; top: 0px; width: 100%; ov=
+erflow: hidden; transition: width 0s linear 5s; }
+
+.hidden-until-hover > * { visibility: hidden; transition: visibility 0s lin=
+ear 5s; }
+
+.hidden-until-hover:hover { transition: border-color 0s linear 1s; border-c=
+olor: transparent; }
+
+.hidden-until-hover:hover::before { content: "( keep hovering )"; transitio=
+n: width 0s linear 1s; width: 0px; }
+
+.hidden-until-hover:hover > * { transition: visibility 0s linear 1s; visibi=
+lity: visible; }
+
+.warning:not(.warning-active) { transition: color 1s ease 0s, opacity 1s ea=
+se 0s; }
+
+.warning-active { color: rgb(255, 0, 0); opacity: 1; }
+
+.star-count { color: rgb(255, 255, 102); }
+
+.supporter-badge { color: rgb(255, 255, 102); }
+
+a.supporter-badge:hover, a.supporter-badge:focus { text-decoration: none; c=
+olor: rgb(255, 255, 204); text-shadow: rgb(255, 255, 102) 0px 0px 5px; }
+
+.sponsor-badge { color: rgb(121, 162, 216); }
+
+a.sponsor-badge:hover, a.sponsor-badge:focus { text-decoration: none; color=
+: rgb(204, 219, 237); text-shadow: rgb(121, 162, 216) 0px 0px 5px; }
+
+#sidebar { width: 200px; float: right; margin: 0px 15px 2em 2em; position: =
+relative; z-index: 10; }
+
+#sponsor { margin-bottom: 2.5em; }
+
+header { white-space: nowrap; cursor: default; z-index: 100; margin-bottom:=
+ 2em; }
+
+header h1 { display: inline-block; margin: 0px; padding-right: 1em; }
+
+header h1 a, header h1 span { display: inline-block; text-decoration: none;=
+ color: rgb(0, 204, 0); text-shadow: rgb(0, 204, 0) 0px 0px 2px, rgb(0, 204=
+, 0) 0px 0px 5px; }
+
+header h1 a:hover, header h1 a:focus { color: rgb(153, 255, 153); text-shad=
+ow: rgb(153, 255, 153) 0px 0px 2px, rgb(153, 255, 153) 0px 0px 5px; }
+
+header h1.title-event .title-event-wrap { opacity: 0.33; white-space: pre; =
+}
+
+header .user { display: inline-block; padding-left: 1em; }
+
+header nav { display: inline-block; }
+
+header nav ul { list-style-type: none; padding: 0px; margin: 0px; display: =
+inline-block; }
+
+header nav li { display: inline-block; padding: 0px 0.6em; }
+
+header nav a { display: inline-block; text-decoration: none; outline: none;=
+ }
+
+input[type=3D"text"], textarea { color: inherit; border: 1px solid rgb(102,=
+ 102, 102); background: rgb(16, 16, 26); padding: 0px 2px; font-family: inh=
+erit; font-size: inherit; margin: 0px; }
+
+textarea { vertical-align: top; }
+
+label img { vertical-align: bottom; position: relative; top: -3px; margin-r=
+ight: 0.3em; }
+
+input[type=3D"radio"] { display: none; }
+
+input[type=3D"radio"] ~ span { cursor: pointer; display: inline-block; }
+
+input[type=3D"radio"] ~ span::before { content: "( ) "; }
+
+input[type=3D"radio"] ~ span:hover, input[type=3D"radio"] ~ span:focus { ba=
+ckground-color: rgb(25, 25, 59); }
+
+input[type=3D"radio"]:checked ~ span { color: rgb(255, 255, 255); }
+
+input[type=3D"radio"]:checked ~ span::before { content: "(O) "; }
+
+input[type=3D"checkbox"] { display: none; }
+
+input[type=3D"checkbox"] ~ span { cursor: pointer; display: inline-block; }
+
+input[type=3D"checkbox"] ~ span::before { content: "[ ] "; }
+
+input[type=3D"checkbox"] ~ span:hover, input[type=3D"checkbox"] ~ span:focu=
+s { background-color: rgb(25, 25, 59); }
+
+input[type=3D"checkbox"]:checked ~ span { color: rgb(255, 255, 255); }
+
+input[type=3D"checkbox"]:checked ~ span::before { content: "[X] "; }
+
+input[type=3D"checkbox"]:disabled ~ span { opacity: 0.3; cursor: default; }
+
+input[type=3D"checkbox"]:disabled ~ span::before { content: "[-] "; }
+
+input[type=3D"checkbox"]:disabled ~ span:hover { background-color: transpar=
+ent; }
+
+input[type=3D"submit"] { background: transparent; border: 0px; font-family:=
+ inherit; font-size: inherit; margin: 0px; padding: 0px; color: rgb(0, 153,=
+ 0); cursor: pointer; }
+
+input[type=3D"submit"]:hover, input[type=3D"submit"]:focus { color: rgb(153=
+, 255, 153); }
+
+article { width: 45em; margin-bottom: 2em; margin-top: 2em; }
+
+article:first-of-type { margin-top: 0px; }
+
+article h2 { color: rgb(255, 255, 255); margin-top: 1em; margin-bottom: 1em=
+; white-space: nowrap; }
+
+article h2 + * { margin-top: 0px; }
+
+article em { color: rgb(255, 255, 255); font-style: normal; text-shadow: rg=
+b(255, 255, 255) 0px 0px 5px; }
+
+article em.star { color: rgb(255, 255, 102); font-style: normal; text-shado=
+w: rgb(255, 255, 102) 0px 0px 5px; }
+
+article a { white-space: nowrap; }
+
+article .aside { opacity: 0.6; }
+
+article ul { list-style-type: none; padding: 0px; }
+
+article li { padding-left: 2.5em; position: relative; }
+
+article li::before { content: "=C2=A0=C2=A0-=C2=A0"; position: absolute; le=
+ft: 0px; top: 0px; }
+
+.day-success { color: rgb(255, 255, 102); text-shadow: rgb(255, 255, 102) 0=
+px 0px 5px; }
+
+form#settings input[type=3D"radio"] ~ span { min-width: 30em; }
+
+form#settings input[type=3D"checkbox"] ~ span { min-width: 30em; }
+
+.share { color: rgb(0, 153, 0); cursor: default; transition: color 0.2s eas=
+e 1s; }
+
+.share:hover, .share:focus-within { color: rgb(170, 255, 170); transition: =
+color 0.2s ease 0s; }
+
+.share .share-content { display: inline-block; vertical-align: text-bottom;=
+ white-space: nowrap; overflow: hidden; max-width: 0px; transition: max-wid=
+th 0.2s ease 1s; }
+
+.share .share-content::before { content: "=C2=A0"; }
+
+.share .share-content::after { }
+
+.share:hover .share-content, .share:focus-within .share-content { max-width=
+: 45em; transition: max-width 0.2s ease 0s; }
+
+.puzzle-input { border: 1px solid rgb(153, 153, 153); background: rgb(51, 5=
+1, 51); color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px =
+5px; }
+
+.calendar { cursor: default; user-select: none; }
+
+.calendar > span { color: rgb(51, 51, 51); }
+
+.calendar > a { text-decoration: none; color: rgb(102, 102, 102); outline: =
+none; cursor: default; }
+
+.calendar a:hover, .calendar a:focus { background-color: rgba(119, 119, 165=
+, 0.2); cursor: pointer; }
+
+#calendar-countdown { padding-left: 0.5em; color: rgb(204, 204, 204); }
+
+.calendar .calendar-day { color: rgb(102, 102, 102); }
+
+.calendar a .calendar-day { color: rgb(204, 204, 204); }
+
+.calendar a .calendar-mark-complete, .calendar a .calendar-mark-verycomplet=
+e { visibility: hidden; }
+
+.calendar a.calendar-complete .calendar-mark-complete, .calendar a.calendar=
+-verycomplete .calendar-mark-complete { visibility: visible; color: rgb(255=
+, 255, 102); }
+
+.calendar a.calendar-verycomplete .calendar-mark-verycomplete { visibility:=
+ visible; color: rgb(255, 255, 102); }
+
+.calendar .calendar-day-new { animation: 5s ease 0s 1 normal none running a=
+nim-day-new; }
+
+.calendar .calendar-day-new .calendar-day { animation: 5s ease 0s 1 normal =
+none running anim-day-new-day; }
+
+@keyframes anim-day-new {=20
+  0% { color: rgb(51, 51, 51); text-shadow: transparent 0px 0px 5px; }
+  25% { color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px =
+5px; }
+  100% { color: rgb(102, 102, 102); text-shadow: transparent 0px 0px 5px; }
+}
+
+@keyframes anim-day-new-day {=20
+  0% { color: rgb(102, 102, 102); text-shadow: transparent 0px 0px 5px; }
+  25% { color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px =
+5px; }
+  100% { color: rgb(204, 204, 204); text-shadow: transparent 0px 0px 5px; }
+}
+
+.eventlist-event { white-space: pre; }
+
+.stats > span, .stats > span .stats-firstonly, .stats > span .stats-both { =
+color: rgb(102, 102, 102); }
+
+.stats > a { color: rgb(204, 204, 204); min-width: 35em; display: inline-bl=
+ock; }
+
+.stats > a:hover, .stats > a:focus { background-color: rgb(30, 30, 70); }
+
+.stats-firstonly { color: rgb(153, 153, 204); }
+
+.stats-both { color: rgb(255, 255, 102); }
+
+.leaderboard-daylinks { cursor: default; }
+
+.leaderboard-daylinks-selected { color: rgb(255, 255, 255); text-shadow: rg=
+b(255, 255, 255) 0px 0px 5px; }
+
+.leaderboard-daydesc-first { color: rgb(153, 153, 204); }
+
+.leaderboard-daydesc-both { color: rgb(255, 255, 102); }
+
+.leaderboard-entry { white-space: pre; }
+
+.leaderboard-entry .leaderboard-totalscore { color: rgb(255, 255, 255); }
+
+.leaderboard-anon { opacity: 0.6; }
+
+.leaderboard-userphoto { display: inline-block; height: 20px; width: 20px; =
+margin: 0px 0.5em; text-align: center; }
+
+.leaderboard-userphoto img { height: 20px; max-width: 20px; vertical-align:=
+ middle; position: relative; top: -2px; }
+
+.leaderboard-time { opacity: 0.5; }
+
+.privboard-row { white-space: pre; }
+
+.privboard-name { vertical-align: text-bottom; }
+
+.privboard-days > span { display: inline-block; color: rgb(51, 51, 51); }
+
+.privboard-days > a { display: inline-block; }
+
+.privboard-star-locked { visibility: hidden; }
+
+.privboard-star-unlocked { color: rgb(51, 51, 51); }
+
+.privboard-star-firstonly { color: rgb(153, 153, 204); }
+
+.privboard-star-both { color: rgb(255, 255, 102); }
+
+.privboard-delbtn { opacity: 0.33; }
+
+.privboard-row:hover .privboard-delbtn { opacity: 1; }
+
+.sponsors { width: 46em; }
+
+.sponsor { margin: 1em 0px; }
+------MultipartBoundary--OkW3vrvvyOVneuQPjGVFqXKbLaZEA1InqSw7JEHA4x----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300
+
+@charset "utf-8";
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMRrTEUc.woff2") format("woff2"); unicode-=
+range: U+460-52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2=
+F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtM1rTEUc.woff2") format("woff2"); unicode-=
+range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMVrTEUc.woff2") format("woff2"); unicode-=
+range: U+1F00-1FFF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMprTEUc.woff2") format("woff2"); unicode-=
+range: U+370-3FF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMZrTEUc.woff2") format("woff2"); unicode-=
+range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+=
+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMdrTEUc.woff2") format("woff2"); unicode-=
+range: U+100-2AF, U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+=
+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMlrTA.woff2") format("woff2"); unicode-ra=
+nge: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308=
+, U+329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+221=
+5, U+FEFF, U+FFFD; }
+------MultipartBoundary--OkW3vrvvyOVneuQPjGVFqXKbLaZEA1InqSw7JEHA4x----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://adventofcode.com/static/highcontrast.css?1
+
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=3DSource+Code+Pro:wgh=
+t@400;900");
+
+* { background: transparent !important; color: black !important; text-shado=
+w: none !important; }
+
+body { background: white !important; font-weight: 400 !important; }
+
+article [title] { border-bottom-color: black !important; }
+
+a { color: rgb(0, 0, 255) !important; text-decoration: underline !important=
+; }
+
+em { font-weight: 900 !important; }
+
+code::before { background: transparent !important; border-color: black !imp=
+ortant; }
+
+.stats-firstonly { opacity: 0.5; }
+
+.privboard-star-firstonly { opacity: 0.667; }
+
+.privboard-star-unlocked { opacity: 0.333; }
+------MultipartBoundary--OkW3vrvvyOVneuQPjGVFqXKbLaZEA1InqSw7JEHA4x----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;900
+
+@charset "utf-8";
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMOvWjMY.woff2") format("woff2"); unicode-range: U+460-52F,=
+ U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlOevWjMY.woff2") format("woff2"); unicode-range: U+301, U+4=
+00-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMevWjMY.woff2") format("woff2"); unicode-range: U+1F00-1FF=
+F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlPuvWjMY.woff2") format("woff2"); unicode-range: U+370-3FF;=
+ }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMuvWjMY.woff2") format("woff2"); unicode-range: U+102-103,=
+ U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-30=
+4, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlM-vWjMY.woff2") format("woff2"); unicode-range: U+100-2AF,=
+ U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD=
+-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 400; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlPevW.woff2") format("woff2"); unicode-range: U+0-FF, U+131=
+, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-20=
+6F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;=
+ }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMOvWjMY.woff2") format("woff2"); unicode-range: U+460-52F,=
+ U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlOevWjMY.woff2") format("woff2"); unicode-range: U+301, U+4=
+00-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMevWjMY.woff2") format("woff2"); unicode-range: U+1F00-1FF=
+F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlPuvWjMY.woff2") format("woff2"); unicode-range: U+370-3FF;=
+ }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlMuvWjMY.woff2") format("woff2"); unicode-range: U+102-103,=
+ U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-30=
+4, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlM-vWjMY.woff2") format("woff2"); unicode-range: U+100-2AF,=
+ U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD=
+-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 900; src: url("https://fonts.gstatic.com/s/sourcecodepro/v23/HI_SiYsKILx=
+Rpg3hIP6sJ7fM7PqlPevW.woff2") format("woff2"); unicode-range: U+0-FF, U+131=
+, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-20=
+6F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;=
+ }
+------MultipartBoundary--OkW3vrvvyOVneuQPjGVFqXKbLaZEA1InqSw7JEHA4x------
