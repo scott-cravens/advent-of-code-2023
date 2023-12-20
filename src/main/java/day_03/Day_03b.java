@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Day_03b {
@@ -41,17 +42,21 @@ public class Day_03b {
 
     private static void findValidPartNumbers(char[][] schematic, int rows, int cols) {
         StringBuilder partNumberBuilder = new StringBuilder();
+        ArrayList<int[]> asterisks = new ArrayList<>(); // Create an empty ArrayList to store coordinates
         for (int row = 0; row < rows; row++) {
             boolean hasAdjacentSymbol = false;
             for (int col = 0; col < cols; col++) {
                 char currentChar = schematic[row][col];
                 if (Character.isDigit(currentChar)) {
                     partNumberBuilder.append(currentChar);
-                    if (checkForAdjacentAsteriskSymbol(schematic, row, col)) hasAdjacentSymbol = true;
+                    findUniqueAdjacentAsterisks(schematic, row, col, asterisks);
                 } else {
-                    if (hasAdjacentSymbol) {
+                    if (!asterisks.isEmpty()) {
+                        // TODO: We finally have a complete potential part number and the asterisks
+                        //  ArrayList contains the coordinates for the adjacent asterisk(s). Create a
+                        //  new structure to store potentialValidPartNumbers and the asterisks ArrayList
                         potentialValidPartNumbers.add(partNumberBuilder.toString());
-                        hasAdjacentSymbol = false;
+                        asterisks = new ArrayList<>();
                     }
                     partNumberBuilder = new StringBuilder();
                 }
@@ -63,9 +68,25 @@ public class Day_03b {
         }
     }
 
+    private static void findUniqueAdjacentAsterisks(char[][] schematic, int row, int col, ArrayList<int[]> asterisks) {
+        ArrayList<int[]> moreAsterisks = findAdjacentAsterisks(schematic, row, col);
+        for (int[] newArr : moreAsterisks) {
+            boolean isUnique = true;
+            for (int[] existingArr : asterisks) {
+                if (Arrays.equals(newArr, existingArr)) {
+                    isUnique = false;
+                    break;
+                }
+            }
+            if (isUnique) {
+                asterisks.add(newArr);
+            }
+        }
+    }
 
-    private static boolean checkForAdjacentAsteriskSymbol(char[][] schematic, int row, int col) {
+    private static ArrayList<int[]> findAdjacentAsterisks(char[][] schematic, int row, int col) {
         // Iterate through surrounding cells (excluding current) searching for asterisk symbols
+        ArrayList<int[]> asterisks = new ArrayList<>(); // Create an empty ArrayList to store coordinates
         for (int dx = -1; dx <= 1; dx++) {
             for (int dy = -1; dy <= 1; dy++) {
                 if (dx == 0 && dy == 0) continue; // Skip checking the current cell
@@ -74,12 +95,12 @@ public class Day_03b {
                     char neighborChar = schematic[newRow][newCol];
                     if (neighborChar == '*') {
                         // Found asterisk next to a digit, signifying a potential valid part number
-                        return true;
+                        asterisks.add(new int[]{newRow, newCol});
                     }
                 }
             }
         }
-        return false; // No asterisk found in surrounding cells
+        return asterisks;
     }
 
     private static char[][] convertListToArray(List<String> lines, int rows, int cols) {
