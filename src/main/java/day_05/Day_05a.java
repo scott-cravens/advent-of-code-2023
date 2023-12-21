@@ -57,9 +57,9 @@ public class Day_05a {
     }
 
     private static long calculateCategoryValue(Long input, List<Long[]> sectionMap) {
-        long destinationRangeStart = 0L;
-        long sourceRangeStart = 0L;
-        long rangeLength = 0L;
+        long destinationRangeStart;
+        long sourceRangeStart;
+        long rangeLength;
 
         for (Long[] range : sectionMap) { // For each range (line)
             destinationRangeStart = range[0];
