@@ -133,7 +133,7 @@ public class Day_05b {
     }
 
     private static List<String> readInputData() {
-        Path filePath = Paths.get("src/main/java/day_05/input_bak.txt");
+        Path filePath = Paths.get("src/main/java/day_05/input.txt");
 
         try {
             // Read all lines from the input file
