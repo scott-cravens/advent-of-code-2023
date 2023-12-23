@@ -129,9 +129,11 @@ public class Day_07b {
 
     public static class HandType {
 
-        static final String labels = "AKQJT98765432";
+        static final String labels = "AKQT98765432J";
 
         public static int getType(int[] hand) {
+
+            // Set cardCounts equal to count of each card
             Map<Character, Integer> cardCounts = new HashMap<>();
             for (int x : hand) {
                 cardCounts.put(labels.charAt(x), cardCounts.getOrDefault(labels.charAt(x), 0) + 1);
@@ -159,14 +161,55 @@ public class Day_07b {
 
         // Create array of index values based on labels
         public static int getTypeFromString(String hand) {
-            int[] handValues = new int[hand.length()];
-            for (int i = 0; i < hand.length(); i++) {
-                char cardLabel = hand.charAt(i);
+            String updatedHand = processJokers(hand);
+            int[] handValues = new int[updatedHand.length()];
+            for (int i = 0; i < updatedHand.length(); i++) {
+                char cardLabel = updatedHand.charAt(i);
                 int cardValue = labels.indexOf(cardLabel);
                 handValues[i] = cardValue;
             }
 
             return getType(handValues);
+        }
+
+        public static String processJokers(String hand) {
+            if (hand == null || hand.isEmpty()) {
+                return hand;  // Assuming empty/null handling is done elsewhere
+            }
+
+            int[] counts = new int[HandType.labels.length()];
+            for (char c : hand.toCharArray()) {
+                int index = HandType.labels.indexOf(c);
+                if (index != -1) {
+                    counts[index]++;
+                }
+            }
+
+            // Check if 'J' is present
+            if (counts[HandType.labels.indexOf('J')] > 0) {
+                char replacement = getReplacement(counts);
+                // Replace 'J' with the determined character
+                hand = hand.replace('J', replacement);
+            }
+
+            return hand;
+        }
+
+        private static char getReplacement(int[] counts) {
+            char replacement = 'J';  // Default replacement is 'J' itself
+            if (counts[HandType.labels.indexOf('J')] == 5) {
+                replacement = 'A';  // Replace with 'A' if there are 5 'J's
+            } else {
+                // Find the character with the highest count and value
+                int maxCount = -1;
+                for (int i = 0; i < counts.length; i++) {
+                    if (counts[i] > maxCount && counts[i] > 0 && HandType.labels.charAt(i) != 'J') {
+                        maxCount = counts[i];
+                        replacement = HandType.labels.charAt(i);
+                    }
+                }
+            }
+            return replacement;
         }
     }
 }
