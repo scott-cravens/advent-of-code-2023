@@ -21,6 +21,11 @@
             <version>7.8.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>1.5.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
